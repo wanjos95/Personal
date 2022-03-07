@@ -1,5 +1,5 @@
 ### This script should be used to create 3 CentOS8 VMs using VAGRANT via Oracle VirtalBox 
-with fixed IP and already setting an username and sshkey for the specified user ###
+### with fixed IP and already setting an username and sshkey for the specified user
 
 
 BOX_IMAGE = "generic/centos8"
@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
         subconfig.vm.disk :disk, name: "sdb", size: "10GB"
       end
 
-  ssh_pub_key = File.readlines("%UserProfile%/.ssh/id_rsa.pub").first.strip
+  ssh_pub_key = File.readlines("C:/Users/WandersonTolentino/.ssh/id_rsa.pub").first.strip
 
   # Install all updates on all machines  
   config.vm.provision "shell", inline: <<-SHELL
@@ -39,5 +39,8 @@ Vagrant.configure("2") do |config|
     chown wanjos.users /home/wanjos/.ssh/authorized_keys
     chmod 600 /home/wanjos/.ssh/authorized_keys
     echo #{ssh_pub_key} >> /home/wanjos/.ssh/authorized_keys
+    touch /etc/sudoers.d/wanjos
+    echo 'wanjos ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/wanjos
+    chmod 0400 /etc/sudoers.d/wanjos
   SHELL
 end
