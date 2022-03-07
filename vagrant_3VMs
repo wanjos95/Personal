@@ -1,39 +1,40 @@
 ### This script should be used to create 3 CentOS8 VMs using VAGRANT via Oracle VirtalBox 
 ### with fixed IP and already setting an username and sshkey for the specified user
 
+### Created by Wanderson dos Anjos 'wno.anjos@gmail.com'
 
 BOX_IMAGE = "generic/centos8"
 
 Vagrant.configure("2") do |config|
   config.vm.define "srvcentos01" do |subconfig|
     subconfig.vm.box = BOX_IMAGE
-    subconfig.vm.hostname = "srvcentos01"
-    subconfig.vm.network :private_network, ip: "192.168.56.101"
+    subconfig.vm.hostname = "srvcentos01"                                                   ## Insert the 1st VM hostname
+    subconfig.vm.network :private_network, ip: "192.168.56.101"                             ## Insert the 1st VM fixed IP Address
     subconfig.vm.disk :disk, name: "sdb", size: "10GB"
   end
   
     config.vm.define "srvcentos02" do |subconfig|
       subconfig.vm.box = BOX_IMAGE
-      subconfig.vm.hostname = "srvcentos02"
-      subconfig.vm.network :private_network, ip: "192.168.56.102"
+      subconfig.vm.hostname = "srvcentos02"                                                 ## Insert the 2nd VM hostname
+      subconfig.vm.network :private_network, ip: "192.168.56.102"                           ## Insert the 2nd VM fixed IP Address
       subconfig.vm.disk :disk, name: "sdb", size: "10GB"
     end
 
       config.vm.define "srvcentos03" do |subconfig|
         subconfig.vm.box = BOX_IMAGE
-        subconfig.vm.hostname = "srvcentos03"
-        subconfig.vm.network :private_network, ip: "192.168.56.103"
+        subconfig.vm.hostname = "srvcentos03"                                               ## Insert the 3rd VM hostname
+        subconfig.vm.network :private_network, ip: "192.168.56.103"                         ## Insert the 3rd VM fixed IP Address
         subconfig.vm.disk :disk, name: "sdb", size: "10GB"
       end
 
-  ssh_pub_key = File.readlines("C:/Users/WandersonTolentino/.ssh/id_rsa.pub").first.strip
+  ssh_pub_key = File.readlines("C:/Users/WandersonTolentino/.ssh/id_rsa.pub").first.strip   ## Change to the path of you Public SSH Key
 
   # Install all updates on all machines  
   config.vm.provision "shell", inline: <<-SHELL
     yum update -y; yum upgrade
-    useradd -m -g users -G wheel wanjos
+    useradd -m -g users -G wheel wanjos                                                     ## Change ALL to from 'wanjos' to your desired name for all of the lines below
     mkdir -p /home/wanjos/.ssh
-    chown wanjos.users /home/wanjos/.ssh
+    chown wanjos.users /home/wanjos/.ssh                                                  
     chmod 700 /home/wanjos/.ssh
     touch /home/wanjos/.ssh/authorized_keys
     chown wanjos.users /home/wanjos/.ssh/authorized_keys
