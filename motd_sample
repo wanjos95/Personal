@@ -1,4 +1,4 @@
-*** Show message after loging in:
+$$ Show message after loging in:
 System wide message
 Add to /etc/motd
 
