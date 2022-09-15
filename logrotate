@@ -1,0 +1,98 @@
+/bin/logrotate	                Log Rotate Binaries
+ls /etc/cron.daily	        Check if Log Rotate is placed at the daily cron
+/etc/logrotate.conf	        Log Rotate configuration file and examples
+logrotate --version	        Check if Log Rotate is installed on the system
+yum install logrotate -y	Install Log Rotate via YUM package
+vim /etc/logrotate.d/foo
+
+	Create file that you will need to log rotate
+/var/log/foo/production.log {
+    daily
+    missingok
+    rotate 30
+    compress
+    notifempty
+}
+sudo logrotate /etc/logrotate.conf --debug	Debug / Test Log rotate
+
+
+cat /etc/logrotate.conf
+
+#========================================================================================
+# Log Rotation files for RedHat - START
+#========================================================================================
+
+# Standart Logs
+daily
+rotate 90
+create
+compress
+
+# Specific Files Logs
+include /etc/logrotate.d
+/var/log/btmp {
+        missingok
+        daily
+        create 0600 root utmp
+        rotate 90
+}
+/var/log/wtmp {
+        compress
+        daily
+        create 0664 root utmp
+        minsize 1M
+        rotate 90
+}
+/var/log/auth.log {
+        daily
+        rotate 90
+        compress
+}
+/var/log/syslog {
+        daily
+        rotate 90
+        compress
+}
+/var/log/faillog {
+        daily
+        rotate 90
+        compress
+}
+/var/log/tallylog {
+        daily
+        rotate 90
+        compress
+}
+/var/log/sudo.log {
+        daily
+        rotate 90
+        compress
+}
+/var/log/secure.log {
+    daily
+        rotate 90
+        compress
+}
+/var/log/cron.log {
+    daily
+        rotate 90
+        compress
+}
+/var/log/boot.log {
+    daily
+        rotate 90
+        compress
+}
+/var/log/spooler.log {
+    daily
+        rotate 90
+        compress
+}
+/var/log/messages {
+    daily
+        rotate 90
+        compress
+}
+#========================================================================================
+# Log Rotation files for RedHat - END
+#========================================================================================
