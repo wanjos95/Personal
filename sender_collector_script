@@ -1,0 +1,11 @@
+[wanjos@srvcentos01 ~]$ cat collect_sender.sh 
+
+#! /bin/bash
+mkdir ~/file
+touch ~/file/teste.pdf
+touch ~/file/jeanzao{1..5}.pdf
+
+echo "Please read this, it's important" | mutt -s ¨Reports_from_Linux_`hostname`¨ -a ~/file/*.pdf -- wno.anjos@gmail.com,wanderson.tolentino@kyndryl.com
+rm -rf ~/file
+
+[wanjos@srvcentos01 ~]$ 
