@@ -1,0 +1,21 @@
+telnet <ip> portnumber
+
+To exit telnet
+control }
+quit
+
+
+
+[@g51xr00002399 sqllib]$ telnet g51pacoreclus001.dal.cpc.ibm.com 61004
+Trying 9.214.157.32...
+
+lsof -i -P -n 61004
+lsof -i -P -n | grep 61004
+nmap g51pacoreclus001.dal.cpc.ibm.com -p 61004
+netstat -an|grep 61004
+netstat -tulpn
+
+Changed /etc/services
+
+
+telnet 10.119.241.22 5666
