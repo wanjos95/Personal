@@ -1,0 +1,39 @@
+[Filling UP Filesystems]
+
+
+
+#dd if=/dev/zero of=myfilename bs=1024  count=[number of kbytes you want]
+
+dd if=/dev/zero of=somefilename bs=1024 count=100
+
+#mkfile [size you want]m  zero2.txt
+
+mkfile 20m somefilename
+
+100GB:
+$ dd if=/dev/zero of=file.fs bs=1024 count=102400000
+
+10GB:
+$ dd if=/dev/zero of=file.fs bs=1024 count=10240000
+
+1GB:
+$ dd if=/dev/zero of=file.fs bs=1024 count=1024000
+
+100MB:
+$ dd if=/dev/zero of=file.fs bs=1024 count=102400
+
+10MB:
+$ dd if=/dev/zero of=file.fs bs=1024 count=10240
+
+1MB:
+$ dd if=/dev/zero of=file.fs bs=1024 count=1024
+
+Reference: <https://linuxconfig.org/how-to-create-a-file-based-filesystem-using-dd-command-on-linux> 
+
+fallocate -l 50G file 
+
+1. fallocate -l 50G big_file
+2. truncate -s 50G big_file
+dd of=bigfile bs=1 seek=50G count=0
+
+Reference: <https://unix.stackexchange.com/questions/292843/way-to-instantly-fill-up-use-up-lots-of-disk-space/292849> 
