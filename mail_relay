@@ -1,0 +1,22 @@
+Sendmail is deprecated since RHEL7
+
+
+yum install -y postfix
+systemctl start postfix
+systemctl enable postfix
+
+-------------------------------------------
+Edit:>  /etc/postfix/main.cf
+
+#relayhost = $mydomain
+#relayhost = [gateway.my.domain]
+#relayhost = [mailserver.isp.tld]
+#relayhost = uucphost
+#relayhost = [an.ip.add.ress]
+relayhost = na.relay.ibm.com
+
+-------------------------------------------
+
+echo "set smtp=na.relay.ibm.com" >> /etc/mail.rc
+
+systemctl restart postfix
