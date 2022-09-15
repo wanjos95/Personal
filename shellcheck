@@ -1,0 +1,19 @@
+Release Stable version v0.7.2 · koalaman/shellcheck · GitHub
+bash - How to install shellcheck 0.7.0 version in Ubuntu 18.04 - Ask Ubuntu
+
+	Ø Install ShellCheck
+	
+sudo su -
+wget https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.x86_64.tar.xz
+tar -xvf shellcheck-v0.7.2.linux.x86_64.tar.xz
+cd shellcheck-v0.7.2
+cp shellcheck /usr/local/bin
+
+
+	Ø Check ShellCheck version
+	
+shellcheck --version
+ShellCheck - shell script analysis tool
+version: 0.7.0
+license: GNU General Public License, version 3
+website: https://www.shellcheck.net
