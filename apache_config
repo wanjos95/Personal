@@ -1,0 +1,18 @@
+yum install httpd elinks	      Install Apache Web Server and Elinks (text based browser)
+cd /var/www/html	              Location of files for the Apache Web Server
+
+
+• vim /var/www/html/index.html	      Create a page with "Welcome to my webserver"; Restart httpd service and then visualize the content via elinks on the localhost server
+ 
+Welcome to my webserver
+ 
+• systemctl restart httpd
+• elinks httpd://localhost
+
+
+elinks httpd http://localhost	       Verify Web Server connection
+
+
+cd /etc/httpd/conf	               Configuration for the Apache Web Server. Document Root shows where the Apache will look for its document.
+ls
+vim httpd.conf
