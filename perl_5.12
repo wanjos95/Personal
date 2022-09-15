@@ -1,0 +1,28 @@
+--prefix=/usr/local/perl5.12
+
+$ perl -v
+$ tar -zxvf perl-5.12.5.tar.gz
+$ cd perl-5.12.5
+$ ./Configure -des -Dprefix=/usr/local/perl5.12
+$ make
+$ make test
+$ make install
+
+	► Installation:
+
+./configure.gnu --prefix=/usr/local/perl-5.12
+make
+make install
+
+	► Verification:
+
+ls -l /usr/local/perl-5.12
+/usr/local/perl-5.12/bin/perl --version
+rpm -ivh <pacote> --prefix=/usr/local/perl5.12
+
+Download Website: https://monovm.com/post/37/install-perl-on-linux
+
+https://metacpan.org/pod/release/GUGOD/App-perlbrew-0.20/lib/App/perlbrew.pm
+https://southgreenplatform.github.io/trainings/hpc/softwareinstallation/
+http://www.rpmfind.net/linux/rpm2html/search.php?query=perl&submit=Search+...&system=&arch=
+https://dl.fedoraproject.org/pub/archive/fedora/linux/releases/14/Fedora/x86_64/os/Packages/?C=N;O=D
