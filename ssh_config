@@ -1,0 +1,36 @@
+/etc/ssh/ssh_config
+
+Example:
+
+#====================================================
+# SSH Configuration - date: DD/MM/YYYY
+#====================================================
+
+#====================================================
+# Security options
+ForwardX11Trusted yes
+
+#====================================================
+# GSSAPI options
+GSSAPIAuthentication yes
+Host *
+
+#====================================================
+# Accept locale-related environment variables
+SendEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+SendEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+SendEnv XMODIFIERS
+
+#====================================================
+# Ignore Known Hosts
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+
+#====================================================
+# Logging
+LogLevel QUIET
+
+#====================================================
+# End of File
+#====================================================
