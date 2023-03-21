@@ -1,0 +1,70 @@
+/etc/ssh/sshd_config
+
+#====================================================
+# SSHD Configuration - date: DD/MM/YYYY
+#====================================================
+
+#====================================================
+# Authentication
+AuthenticationMethods keyboard-interactive
+AuthorizedKeysFile .ssh/authorized_keys
+PubkeyAuthentication yes
+PasswordAuthentication no
+ChallengeResponseAuthentication yes
+PermitRootLogin without-password
+#====================================================
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+#====================================================
+# Ciphers and keying
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+#====================================================
+# Settings
+Port 22
+Protocol 2
+UseDNS no
+UsePAM yes
+MaxAuthTries 5
+MaxSessions 10
+PermitTunnel no
+#ClientAliveInterval 300
+#ClientAliveCountMax 5
+PermitEmptyPasswords no
+PermitUserEnvironment no
+StrictModes yes
+X11Forwarding yes
+AllowTcpForwarding no
+Subsystem sftp  /usr/libexec/openssh/sftp-server
+#====================================================
+# Settings - Ansible Sandbox Only
+# AllowStreamLocalForwarding yes
+# AllowTcpForwarding yes
+#====================================================
+# Logging
+SyslogFacility AUTHPRIV
+LogLevel INFO
+#====================================================
+# Accept locale-related environment variables
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+#====================================================
+# GSSAPI options
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+#====================================================
+# Match User
+Match User root,itimssh
+    AuthenticationMethods publickey
+#====================================================
+# Match Group
+Match Group functids,whitelst,igacioda
+    AuthenticationMethods publickey
+Match Group support,infra,ahadm
+    AuthenticationMethods publickey keyboard-interactive
+#====================================================
+# End of File
+#====================================================
