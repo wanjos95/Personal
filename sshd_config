@@ -1,4 +1,22 @@
-/etc/ssh/sshd_config
+Edit /etc/ssh/sshd_config
+Restart SSHD Service
+
+
+sshd -t  ==> Make sure the changes didn't impact the SSH connection.
+
+Once sshd_config file was added, connect to another terminal of the VM/Server just to be sure another session will be available and restart the sshd services via:
+
+FOR AIX:
+
+stopsrc -s sshd
+startsrc -s sshd
+
+FOR LINUX:
+
+systemctl restart sshd
+
+
+Example for sshd configuration file:
 
 #====================================================
 # SSHD Configuration - date: DD/MM/YYYY
